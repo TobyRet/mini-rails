@@ -32,6 +32,14 @@ RSpec.describe 'ActiveRecord' do
     expect(post.title).to eq('Blueberry Muffins')
   end
 
+  it '#where' do
+    relation = Post.where('id = 2').where('title IS NOT NULL')
+    expect(relation.to_sql).to eq('SELECT * FROM posts WHERE id = 2 AND title IS NOT NULL')
+
+    post = relation.first
+    expect(post.id).to eq(2)
+  end
+
   describe '#connection' do
     it 'executes SQL' do
       rows = Post.connection.execute("SELECT * FROM posts")
