@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'active_record'
-require 'active_support'
 
 RSpec.describe ActiveRecord do
   before(:each) do
